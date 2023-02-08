@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 import {
   BackgroundImage,
   Body,
@@ -7,17 +6,17 @@ import {
 } from "./directory-item.styles.js";
 
 const DirectoryItem = ({ category }) => {
-  const { title, imageUrl } = category;
+  const { title, imageUrl, route } = category;
   const navigate = useNavigate();
 
-  const goToCategory = () => {
-    navigate(`/shop/${title}`);
+  const navigateHandler = () => {
+    navigate(route);
   };
 
   return (
-    <DirectoryItemContainer>
+    <DirectoryItemContainer onClick={navigateHandler}>
       <BackgroundImage imageUrl={imageUrl} />
-      <Body onClick={goToCategory}>
+      <Body>
         <h2>{title.toUpperCase()}</h2>
         <p>SHOP NOW</p>
       </Body>
